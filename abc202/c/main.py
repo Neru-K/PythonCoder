@@ -5,12 +5,12 @@ a = list(map(int, input().split()))
 b = list(map(int, input().split()))
 c = list(map(int, input().split()))
 count = 0
-lst = [0] * n
+lst = [0] * (n + 1)
 
 for x in c:
-    lst[b[x-1]-1] += 1
+    lst[b[x - 1]] += 1
 
-for i in a:
+for i in range(len(a)):
     count += lst[a[i]]
 
 print(count)
