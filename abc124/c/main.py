@@ -17,5 +17,3 @@ for i in range(0, len(s), 2):
         onezero += 1
     elif s[fidx:lidx] == "11":
         oneone += 1
-
-if len(s) % 2 == 0:
