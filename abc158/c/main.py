@@ -1,13 +1,16 @@
 import math
 
 # a, b = map(int, input().split())
-a = 250
-b = 320
 
-print(a * 1.25)
-print(b)
+a, b = 72, 89
 
-if math.floor(a * 1.25) == math.floor(b):
-    print(int(max(a * 12.5, b * 10)))
+y1 = a * 125
+y2 = b * 100
+
+max = max(y1, y2)
+min = min(y1, y2)
+
+if abs(math.ceil(a * 0.1) - math.ceil(b * 0.08)) == 0:
+    print(math.ceil(max * 0.1))
 else:
     print(-1)
