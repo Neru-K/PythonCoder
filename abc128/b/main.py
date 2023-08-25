@@ -7,10 +7,5 @@ for i in range(N):
 
 sorted_data = sorted(array, key=lambda x: (x[0], -int(x[1])))
 
-dict = {}
-
 for j in range(N):
-    dict[sorted_data[j][2]] = j + 1
-
-for k in range(N):
-    print(dict[array[k][2]])
+    print(sorted_data[j][2])
