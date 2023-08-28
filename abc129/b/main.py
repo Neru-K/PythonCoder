@@ -2,22 +2,14 @@ N = int(input())
 W = list(map(int, input().split()))
 
 sum = sum(W)
-average = sum / N
-more = 0
-less = 0
-equal = 0
-
-print(average)
+min = 10001
+S1 = 0
 
 for w in W:
-    if average == w:
-        equal = w
-    if average > w:
-        more += w
-    else:
-        less += w
+    S1 += w
+    S2 = sum - S1
+    diff = abs(S1 - S2)
+    if diff < min:
+        min = diff
 
-result = 0
-
-print(abs(more - (less + equal)))
-print(abs((more + equal) - less))
+print(min)
