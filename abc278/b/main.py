@@ -1,29 +1,36 @@
-H, M = map(str, input().split())
+H, M = map(int, input().split())
 
-H = "0" + H
-H = H[-2:]
+i = H
+j = M
 
-M = "0" + M
-M = M[-2:]
+breakflg = False
 
-print(H)
-print(M)
+while i < 49:
+    if i < H:
+        continue
 
-if int(H[0] + M[0]) < 24 and int(H[1] + M[1]) < 60:
-    print(H + " " + M)
-else:
-    for i in range(int(H), 24):
-        breakFlag = False
-        H = "0" + str(i)
-        H = H[-2:]
-        for j in range(int(M), 60):
-            M = "0" + str(j)
-            M = M[-2:]
+    hour = "0" + str(i % 24)
+    hour = str(hour[-2:])
 
-            if int(H[0] + M[0]) < 24 and int(H[1] + M[1]) < 60:
-                print(H + " " + M)
-                breakFlag = True
+    while j <= 60:
+        if i <= H and j < M:
+            continue
+
+        minute = "0" + str(j)
+        minute = minute[-2:]
+        first_num = int(hour[0] + minute[0])
+        second_num = int(hour[1] + minute[1])
+        if first_num >= 0 and first_num <= 23:
+            if second_num >= 0 and second_num <= 59:
+                print(str(i % 24) + " " + str(j))
+                breakflg = True
                 break
 
-        if breakFlag:
-            break
+        j = j + 1
+
+    j = 0
+
+    if breakflg:
+        break
+
+    i = i + 1
