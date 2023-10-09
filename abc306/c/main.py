@@ -1,24 +1,17 @@
-n = int(input())
-a = list(map(int, input().split()))
+N = int(input())
+A = list(map(int, input().split()))
 
-index = []
-index2 = []
-index3 = []
+array = [[] for _ in range(N)]
+result = []
 
-for i in range(1, n+1):
+for i in range(len(A)):
+    array[A[i] - 1].append(i + 1)
 
-    for j in range(len(a)):
+for j in range(N):
+    result.append((array[j][1], str(j + 1)))
 
-        if a[j] == i:
-            if i == 1:
-                index.append(j + 1)
-            if i == 2:
-                index2.append(j + 1)
-            if i == 3:
-                index3.append(j + 1)
+result.sort(key=lambda x: x[0])
 
-mid = [index[1], index2[1], index3[1]]
+str = [tuple[1] for tuple in result]
 
-mid.sort()
-
-print(str(mid[0]) + " " + str(mid[1]) + " " + str(mid[2]))
+print(" ".join(str))
