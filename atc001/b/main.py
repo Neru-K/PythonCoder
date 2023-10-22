@@ -39,9 +39,9 @@ queries = [list(map(int, input().split())) for i in range(Q)]
 # クエリの処理
 uf = unionfind(N)
 for tp, u, v in queries:
-    if tp == 1:
+    if tp == 0:
         uf.unite(u, v)
-    if tp == 2:
+    if tp == 1:
         if uf.same(u, v):
             print("Yes")
         else:
