@@ -1,24 +1,13 @@
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
-ab = [list(map(int, input().split())) for _ in range(m)]
+power = [0] * N
 
-persons = [0] * n
+for i in range(M):
+    A, B = map(int, input().split())
+    power[B - 1] += 1
 
-
-for i in range(1, n + 1):
-    for j in ab:
-        if i == j[1]:
-            persons[i - 1] += 1
-
-count = 0
-num = 0
-
-for idx, k in enumerate(persons):
-    if k == 0:
-        count += 1
-        num = idx + 1
-
-if count == 0:
-    print(num)
+if power.count(0) == 1:
+    index_of_zero = power.index(0)
+    print(index_of_zero + 1)
 else:
     print(-1)
