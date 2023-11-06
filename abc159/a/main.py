@@ -1,3 +1,5 @@
 n, m = map(int, input().split())
 
-sum = 2 * n + m
+for o in range(n):
+    for e in range(m):
+        
