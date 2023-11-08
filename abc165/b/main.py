@@ -1,12 +1,12 @@
-import math
-
 X = int(input())
 
 count = 0
 price = 100
 
 while price < X:
-    price += math.floor(price * 0.01)
+    # 1%増を整数で計算する
+    increase = price // 100
+    price += increase
     count += 1
 
 print(count)
