@@ -1,10 +1,8 @@
-import math
+from math import sqrt
 
 n = int(input())
-
-mx = 0
-
-for i in range(1, math.floor(n**0.5)):
-    num = n // i
-    if n - (num * num) > mx:
-        mx = n - (num * num)
+ans = n
+for w in range(1, int(sqrt(n)) + 2):
+    h = n // w
+    ans = min(ans, abs(w - h) + n - w * h)
+print(ans)
