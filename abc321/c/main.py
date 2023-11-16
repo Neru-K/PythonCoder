@@ -1,13 +1,13 @@
 K = int(input())
 
-i = 1
-while True:
-    s = str(i)
+ans = []
+for i in range(1, 1 << 10):  # 0を含めず、1から2^10-1までの範囲でビット全探索
+    s = ""
+    for j in range(10):  # 各ビット位置を確認
+        if (i >> j) & 1:
+            s = str(j) + s  # 降順に数字を追加
+    ans.append(int(s))
 
-    for j in range(len(s)):
-        for 
-            if i == K:
-                print(i)
-                break
-            else:
-                j += 1
+ans.sort()
+
+print(ans[K - 1])
