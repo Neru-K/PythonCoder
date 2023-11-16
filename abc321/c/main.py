@@ -10,4 +10,4 @@ for i in range(1, 1 << 10):  # 0を含めず、1から2^10-1までの範囲で�
 
 ans.sort()
 
-print(ans[K - 1])
+print(ans[K])
