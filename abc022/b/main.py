@@ -1,12 +1,5 @@
 N = int(input())
+A = [int(input()) for _ in range(N)]
+unique = set(A)
 
-A = [0] * N
-count = 0
-
-for i in range(N):
-    A[i] = int(input())
-
-    if A[i] < i + 1 and A[i] == A[A[i] - 1]:
-        count += 1
-
-print(count)
+print(len(A) - len(unique))
