@@ -1,53 +1,42 @@
 N, T = map(str, input().split())
 
-n = int(N)
 count = 0
 result = []
 
-for i in range(n):
+for i in range(int(N)):
     S = input()
 
-    if len(S) > len(T) + 1 or len(T) > len(S) + 1:
-        continue
-
     if S == T:
-        count += 1
         result.append(str(i + 1))
-        continue
 
-    elif T.startswith(S) or S.startswith(T):
-        count += 1
-        result.append(str(i + 1))
-        continue
+    elif len(S) == len(T):
+        diff = 0
+        for j in range(len(S)):
+            if S[j] != T[j]:
+                diff += 1
+        if diff == 1:
+            result.append(str(i + 1))
 
-    elif T.endswith(S) or S.endswith(T):
-        count += 1
-        result.append(str(i + 1))
-        continue
+    elif abs(len(S) - len(T)) == 1:
+        minStr = min(S, T, key=len)
+        maxStr = max(S, T, key=len)
+        diff2 = 0
+        l = 0
 
-    mx = max(S, T)
-    mn = min(S, T)
-    concat = mx + mn
-    cnt = 0
-    idx1 = 0
-    idx2 = 0
+        for k in range(len(minStr)):
+            while l < len(maxStr):
+                if minStr[k] == maxStr[l]:
+                    l += 1
+                    break
+                else:
+                    diff2 += 1
+                    l += 1
 
-    for j in range(len(mx)):
-        if mx[idx1] == mn[idx2]:
-            idx1 += 1
-            idx2 += 1
-        else:
-            idx1 += 1
-            cnt += 1
-            if cnt > 1:
-                break
+                if diff2 > 1:
+                    break
 
-    if cnt == 1:
-        count += 1
-        result.append(str(i + 1))
-        continue
+        if diff2 <= 1:
+            result.append(str(i + 1))
 
-
-print(count)
-
+print(len(result))
 print(" ".join(result))
