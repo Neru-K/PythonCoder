@@ -1,3 +1,4 @@
+# Atcoderをもっとやりたいけど残業が多くて眠い
 A, B, K = map(int, input().split())
 
 array = []
