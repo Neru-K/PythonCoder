@@ -1,8 +1,8 @@
 N, K, A = map(int, input().split())
 
-amari = K % N
+result = (A + K - 1) % N
 
-if N == 1:
+if result == 0:
     print(N)
 else:
-    print(N - A + amari)
+    print(result)
