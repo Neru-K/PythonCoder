@@ -29,14 +29,37 @@ function fetchJson(url) {
 
 
 function createToppageContent(obj) {
-    const array = obj.dir;
+    const dir = obj.dir;
     const table = document.getElementById('content');
-    array.forEach(element => {
-        const dirname = element.dirname;
-        const tr = document.createElement('tr');
-        const th = document.createElement('th');
-        th.textContent = dirname;
-        tr.appendChild(th);
-        table.appendChild(tr);
+    dir.forEach(contestgenre => {
+        contestgenre.contests.forEach(contest => {
+            const dirname = contest.name;
+            const problemset = contest.problemset;
+            problemset.forEach(rank => {
+                const tr = document.createElement('tr');
+                const th = document.createElement('th');
+                th.textContent = dirname;
+                tr.appendChild(th);
+                table.appendChild(tr);
+
+                rank.forEach(char => {
+                    const td = document.createElement('td');
+                    if (contest.problems.char) {
+                        const span = document.createElement('span');
+                        span.textContent = contest.problems.char.title;
+                        span.addEventListener('click', function () {
+                            console.log('span tag clicked');
+                        });
+                        td.appendChild(span);
+                    } else {
+                        td.textContent = char.toUpperCase();
+                    }
+                });
+            });
+
+
+            const content = problem.content;
+        });
+
     });
 }
