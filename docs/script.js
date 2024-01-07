@@ -1,6 +1,6 @@
 (function () {
     window.addEventListener('DOMContentLoaded', async function () {
-        const jsonUrl = 'https://raw.githubusercontent.com/Neru-K/PythonCoder/master/docs/blog.json';
+        const jsonUrl = 'blog.json';
         try {
             const contents = await fetchJson(jsonUrl);
             if (contents) {
