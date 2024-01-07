@@ -1,7 +1,8 @@
 {
     "dir": [
         {
-            "abc246": {
+            "dirname": "abc246",
+            "content": {
                 "c": {
                     "title": "C - Coupon",
                     "body": [

@@ -1,15 +1,42 @@
 (function () {
-    window.addEventListener('DOMContentLoaded', function () {
-        // JSONファイルのURL
+    window.addEventListener('DOMContentLoaded', async function () {
         const jsonUrl = 'https://raw.githubusercontent.com/Neru-K/PythonCoder/master/docs/blog.json';
-
-        // JSONデータを取得して表示
-        fetch(jsonUrl)
-            .then(response => response.json())
-            .then(data => {
-                const contentDiv = document.getElementById('content');
-                contentDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
+        try {
+            const contents = await fetchJson(jsonUrl);
+            if (contents) {
+                createToppageContent(JSON.parse(contents));
+            }
+        } catch (error) {
+            console.error('Error in fetching or processing JSON:', error);
+        }
     });
 }());
+
+function fetchJson(url) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => JSON.stringify(data, null, 2))
+        .catch(error => {
+            console.error('Error fetching JSON:', error);
+            throw error;
+        });
+}
+
+
+function createToppageContent(obj) {
+    const array = obj.dir;
+    const table = document.getElementById('content');
+    array.forEach(element => {
+        const dirname = element.dirname;
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        th.textContent = dirname;
+        tr.appendChild(th);
+        table.appendChild(tr);
+    });
+}
