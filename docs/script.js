@@ -5,7 +5,9 @@
         try {
             contents = await fetchJson(jsonUrl);
             if (contents) {
-                createListContents(JSON.parse(contents));
+                const obj = JSON.parse(contents);
+                createListContents(obj);
+                createDetailContents(obj);
             }
         } catch (error) {
             console.error('Error in fetching or processing JSON:', error);
@@ -55,7 +57,7 @@ function createListContents(obj) {
     });
 }
 
-function createDetailContents(contents) {
+function createDetailContents(obj) {
     const table = document.getElementById('content');
     const details = document.getElementById('details');
     const spans = document.querySelectorAll('[data-idx]');
@@ -65,9 +67,9 @@ function createDetailContents(contents) {
             details.style.display = "block";
             const attr = span.getAttribute('data-idx').split('-');
             console.log(attr);
-            const contestgenre = contents.dir[attr[0]].contestgenre;
-            const title = contents.dir[attr[0]].contests[attr[1]].problems[attr[2]].title;
-            const body = contents.dir[attr[0]].contests[attr[1]].problems[attr[2]].body;
+            const contestgenre = obj.dir[attr[0]].contestgenre;
+            const title = obj.dir[attr[0]].contests[attr[1]].problems[attr[2]].title;
+            const body = obj.dir[attr[0]].contests[attr[1]].problems[attr[2]].body;
             console.log(contestgenre);
             console.log(title);
             console.log(body);
