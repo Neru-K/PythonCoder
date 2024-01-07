@@ -45,9 +45,9 @@ function createToppageContent(obj) {
 
 
                 const td = document.createElement('td');
-                if (contest.problems.rank) {
+                if (contest.problems[rank]) {
                     const span = document.createElement('span');
-                    span.textContent = contest.problems.rank.title;
+                    span.textContent = contest.problems[rank].title;
                     span.addEventListener('click', function () {
                         console.log('span tag clicked');
                     });
