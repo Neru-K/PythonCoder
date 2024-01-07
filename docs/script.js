@@ -44,7 +44,7 @@ function createToppageContent(obj) {
                 if (contest.problems[rank]) {
                     tds += "<td><span>" + contest.problems[rank].title + "</span></td>";
                 } else {
-                    tds += "<td><span>" + rank.toUpperCase() + "</span></td>";
+                    tds += "<td>" + rank.toUpperCase() + "</td>";
                 }
             });
 
