@@ -1,11 +1,11 @@
 (function () {
     window.addEventListener('DOMContentLoaded', async function () {
-        let contents = null;
+        let response = null;
         const jsonUrl = 'blog.json';
         try {
-            contents = await fetchJson(jsonUrl);
-            if (contents) {
-                const obj = JSON.parse(contents);
+            response = await fetchJson(jsonUrl);
+            if (response) {
+                const obj = JSON.parse(response);
                 createListContents(obj);
                 createDetailContents(obj);
             }
@@ -73,6 +73,15 @@ function createDetailContents(obj) {
             console.log(contestgenre);
             console.log(title);
             console.log(body);
+            let str = "<h1>" + title + "</h1>";
+            body.forEach(el => {
+                if (el.tag == "code") {
+                    str += "<pre><code>" + el.text + "</code></pre>";
+                } else {
+                    str += "<" + el.code + ">" + el.text + "</" + el.code + ">";
+                }
+            });
+            details.insertAdjacentHTML('beforeend', str);
         });
     });
 
