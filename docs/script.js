@@ -78,7 +78,7 @@ function createDetailContents(obj) {
                 if (el.tag == "code") {
                     str += '<pre><code class="language-python">' + el.text + '</code></pre>';
                 } else {
-                    str += "<" + el.code + ">" + el.text + "</" + el.code + ">";
+                    str += "<" + el.tag + ">" + el.text + "</" + el.tag + ">";
                 }
             });
             details.insertAdjacentHTML('beforeend', str);
