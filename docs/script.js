@@ -1,8 +1,9 @@
 (function () {
     window.addEventListener('DOMContentLoaded', async function () {
+        let contents = null;
         const jsonUrl = 'blog.json';
         try {
-            const contents = await fetchJson(jsonUrl);
+            contents = await fetchJson(jsonUrl);
             if (contents) {
                 createToppageContent(JSON.parse(contents));
             }
@@ -33,34 +34,23 @@ function createToppageContent(obj) {
     const table = document.getElementById('content');
     dir.forEach(contestgenre => {
         contestgenre.contests.forEach(contest => {
-            const dirname = contest.name;
-            const tr = document.createElement('tr');
-            const th = document.createElement('th');
-            th.textContent = dirname;
-            tr.appendChild(th);
-
+            let str = "";
+            let th = "<th>" + contest.name + "</th>";
 
             const problemset = contest.problemset;
+            let tds = "";
             problemset.forEach(rank => {
 
-
-                const td = document.createElement('td');
                 if (contest.problems[rank]) {
-                    const span = document.createElement('span');
-                    span.textContent = contest.problems[rank].title;
-                    span.addEventListener('click', function () {
-                        console.log('span tag clicked');
-                    });
-                    td.appendChild(span);
+                    tds += "<td><span>" + contest.problems[rank].title + "</span></td>";
                 } else {
-                    td.textContent = rank.toUpperCase();
+                    tds += "<td><span>" + rank.toUpperCase() + "</span></td>";
                 }
-                tr.appendChild(td);
             });
 
 
-            table.appendChild(tr);
+            str += "<tr>" + th + tds + "</tr>";
         });
-
+        table.insertAdjacentHTML("beforeend", str);
     });
 }
