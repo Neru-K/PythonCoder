@@ -82,6 +82,7 @@ function createDetailContents(obj) {
                 }
             });
             details.insertAdjacentHTML('beforeend', str);
+            hljs.highlightAll();
         });
     });
 
