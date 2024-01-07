@@ -34,13 +34,15 @@ function createToppageContent(obj) {
     dir.forEach(contestgenre => {
         contestgenre.contests.forEach(contest => {
             const dirname = contest.name;
+            const tr = document.createElement('tr');
+            const th = document.createElement('th');
+            th.textContent = dirname;
+            tr.appendChild(th);
+
+
             const problemset = contest.problemset;
             problemset.forEach(rank => {
-                const tr = document.createElement('tr');
-                const th = document.createElement('th');
-                th.textContent = dirname;
-                tr.appendChild(th);
-                table.appendChild(tr);
+
 
                 const td = document.createElement('td');
                 if (contest.problems.rank) {
@@ -53,11 +55,11 @@ function createToppageContent(obj) {
                 } else {
                     td.textContent = rank.toUpperCase();
                 }
-
+                tr.appendChild(td);
             });
 
 
-            const content = problem.content;
+            table.appendChild(tr);
         });
 
     });
