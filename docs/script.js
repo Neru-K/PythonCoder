@@ -76,7 +76,7 @@ function createDetailContents(obj) {
             let str = "<h1>" + title + "</h1>";
             body.forEach(el => {
                 if (el.tag == "code") {
-                    str += "<pre><code>" + el.text + "</code></pre>";
+                    str += '<pre><code class="language-python">' + el.text + '</code></pre>';
                 } else {
                     str += "<" + el.code + ">" + el.text + "</" + el.code + ">";
                 }
