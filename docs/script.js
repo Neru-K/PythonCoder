@@ -33,8 +33,8 @@ function createToppageContent(obj) {
     const dir = obj.dir;
     const table = document.getElementById('content');
     dir.forEach(contestgenre => {
+        let str = "";
         contestgenre.contests.forEach(contest => {
-            let str = "";
             let th = "<th>" + contest.name + "</th>";
 
             const problemset = contest.problemset;
