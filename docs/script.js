@@ -42,19 +42,18 @@ function createToppageContent(obj) {
                 tr.appendChild(th);
                 table.appendChild(tr);
 
-                rank.forEach(char => {
-                    const td = document.createElement('td');
-                    if (contest.problems.char) {
-                        const span = document.createElement('span');
-                        span.textContent = contest.problems.char.title;
-                        span.addEventListener('click', function () {
-                            console.log('span tag clicked');
-                        });
-                        td.appendChild(span);
-                    } else {
-                        td.textContent = char.toUpperCase();
-                    }
-                });
+                const td = document.createElement('td');
+                if (contest.problems.rank) {
+                    const span = document.createElement('span');
+                    span.textContent = contest.problems.rank.title;
+                    span.addEventListener('click', function () {
+                        console.log('span tag clicked');
+                    });
+                    td.appendChild(span);
+                } else {
+                    td.textContent = rank.toUpperCase();
+                }
+
             });
 
 
