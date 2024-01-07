@@ -31,6 +31,11 @@ table#content, table#content th, table#content td {
     border-collapse: collapse;
 }
 
-table#content th, table td {
+table#content th, table#content td {
     min-width: 100px;
+}
+
+table#content td span {
+    text-decoration: underline;
+    cursor: pointer;
 }
