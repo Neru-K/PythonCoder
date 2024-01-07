@@ -1,7 +1,7 @@
 (function () {
     window.addEventListener('DOMContentLoaded', function () {
         // JSONファイルのURL
-        const jsonUrl = 'https://github.com/Neru-K/PythonCoder/blog/blog.json';
+        const jsonUrl = 'https://github.com/Neru-K/PythonCoder/docs/blog.json';
 
         // JSONデータを取得して表示
         fetch(jsonUrl)
