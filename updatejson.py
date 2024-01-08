@@ -5,6 +5,9 @@ import sys
 
 # この関数は `main.py` ファイルの内容を解析して、必要なデータを抽出します。
 def parse_main_py(file_path):
+    if not os.path.exists(file_path):
+        return None
+
     with open(file_path, "r") as file:
         lines = file.read().splitlines()
 
@@ -51,7 +54,7 @@ def update_blog_json(json_path, contest_type, problem_id, content):
     if content is None:
         return
 
-    with open(json_path, "r") as file:
+    with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     # 適切なコンテストと問題を見つけて更新
@@ -62,8 +65,8 @@ def update_blog_json(json_path, contest_type, problem_id, content):
                     prob["problems"] = content
                     break
 
-    with open(json_path, "w") as file:
-        json.dump(data, file, indent=4)
+    with open(json_path, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
 
 
 def main(file_paths):
