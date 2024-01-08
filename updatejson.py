@@ -70,7 +70,7 @@ def update_blog_json(json_path, contest_type, problem_id, content):
 
 
 def main(file_paths):
-    print(file_paths)
+    print("file_paths is " + file_paths)
     json_path = "docs/blog.json"  # JSONファイルのパス
 
     for file_path in file_paths:
@@ -78,6 +78,9 @@ def main(file_paths):
             os.path.dirname(os.path.dirname(file_path))
         ).upper()
         problem_id = os.path.basename(os.path.dirname(file_path))
+
+        print("contest_type is " + contest_type)
+        print("problem_id is " + problem_id)
 
         content = parse_main_py(file_path)
         update_blog_json(json_path, contest_type, problem_id, content)
