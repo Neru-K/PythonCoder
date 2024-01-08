@@ -23,7 +23,7 @@ jobs:
       - name: Get changed files
         id: files
         run: |
-          changed_files=$(git diff --name-only ${{ github.sha }}^! | grep 'main.py')
+          changed_files=$(git diff --name-only HEAD HEAD~1 | grep 'main.py')
           echo "Changed files: $changed_files"
           echo "::set-output name=list::$changed_files"
 
