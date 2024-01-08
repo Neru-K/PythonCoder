@@ -27,10 +27,10 @@ jobs:
         run: |
           changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'main.py')
           echo "Changed files: $changed_files"
-          echo "::set-output name=list::$changed_files"
+          echo "changed_files=$changed_files" >> $GITHUB_ENV
 
       - name: Run Update Script
-        run: python updatejson.py "${{ steps.files.outputs.list }}"
+        run: python updatejson.py ${{ env.changed_files }}
 
       - name: Commit and Push Changes
         run: |
