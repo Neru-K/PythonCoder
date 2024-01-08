@@ -38,4 +38,4 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add docs/blog.json
           git commit -m 'Update JSON file based on main.py changes'
-          git push
+          git -c http.extraHeader="AUTHORIZATION: basic $(echo -n x-access-token:${{ secrets.GITHUB_TOKEN }} | base64)" push
