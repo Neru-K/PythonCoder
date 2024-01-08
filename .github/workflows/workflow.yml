@@ -34,6 +34,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
           git add docs/blog.json
           git commit -m 'Update JSON file based on main.py changes'
           git push
