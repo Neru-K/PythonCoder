@@ -70,6 +70,7 @@ def update_blog_json(json_path, contest_type, problem_id, content):
 
 
 def main(file_paths):
+    print(file_paths)
     json_path = "docs/blog.json"  # JSONファイルのパス
 
     for file_path in file_paths:
