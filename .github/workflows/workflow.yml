@@ -23,7 +23,9 @@ jobs:
       - name: Get changed files
         id: files
         run: |
-          echo "::set-output name=list::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'main.py')"
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'main.py')
+          echo "Changed files: $changed_files"
+          echo "::set-output name=list::$changed_files"
 
       - name: Run Update Script
         run: python updatejson.py "${{ steps.files.outputs.list }}"
