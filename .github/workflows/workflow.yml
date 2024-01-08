@@ -1,0 +1,35 @@
+name: Update JSON File
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**/main.py'
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Get changed files
+        id: files
+        run: |
+          echo "::set-output name=list::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'main.py')"
+
+      - name: Run Update Script
+        run: python updatejson.py "${{ steps.files.outputs.list }}"
+
+      - name: Commit and Push Changes
+        run: |
+          git add docs/blog.json
+          git commit -m 'Update JSON file based on main.py changes'
+          git push

@@ -13,7 +13,7 @@
                         "e",
                         "f",
                         "g",
-                        "h/ex"
+                        "ex"
                     ],
                     "problems": {
                         "c": {
@@ -36,6 +36,26 @@
                     }
                 }
             ]
+        },
+        {
+            "contestgenre": "ARC",
+            "contests": []
+        },
+        {
+            "contestgenre": "AGC",
+            "contests": []
+        },
+        {
+            "contestgenre": "ATC",
+            "contests": []
+        },
+        {
+            "contestgenre": "TYPICAL90",
+            "contests": []
+        },
+        {
+            "contestgenre": "TESSOKU-BOOK",
+            "contests": []
         }
     ]
 }
