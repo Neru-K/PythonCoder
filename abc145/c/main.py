@@ -11,10 +11,15 @@ for i in range(N):
 
 sum = 0
 
-# 理解に時間がかかるところ。二次元以上が絡むループ（言語化できていない）
+count = 0
 
 for i in itertools.permutations(range(N)):
     dist = 0
-    for j in len(i):  # arr[(x,y),(x,y),(x,y)]
-        dist += math.sqrt(arr[j])
-    print(i)
+    for j in range(N - 1):  # arr[(x,y),(x,y),(x,y)]
+        x1, x2 = arr[i[j]][0], arr[i[j + 1]][0]
+        y1, y2 = arr[i[j]][1], arr[i[j + 1]][1]
+        dist += math.hypot(x2 - x1, y2 - y1)
+    sum += dist
+    count += 1
+
+print(sum / count)
