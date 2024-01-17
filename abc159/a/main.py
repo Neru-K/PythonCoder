@@ -1,5 +1,3 @@
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
-for o in range(n):
-    for e in range(m):
-        
+print(N * (N - 1) // 2 + M * (M - 1) // 2)
