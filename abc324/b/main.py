@@ -1,13 +1,47 @@
+""" 
+・ユークリッドの互除法でいけるか？
+・それとも2で割り続けて、割れなくなったら3で割って・・・でいけるか？
+・ユークリッドの互除法でやってみたが、y=0の際もあるのでできなかった
+"""
+
+
+def binary_gcd(a, b):
+    if b == 0:
+        return a
+    if a == 0:
+        return b
+
+    # kをaとbの最大の共通の2の累乗とする（aとbがともに偶数である限り2で割り続ける）
+    k = 0
+    while ((a | b) & 1) == 0:
+        a >>= 1
+        b >>= 1
+        k += 1
+
+    # aを奇数にする
+    while (a & 1) == 0:
+        a >>= 1
+
+    while b != 0:
+        # bを奇数にする
+        while (b & 1) == 0:
+            b >>= 1
+
+        # aとbの絶対値の差の一方を新しいbとする
+        if a > b:
+            a, b = b, a - b
+        else:
+            b = b - a
+
+    return a << k
+
+
 N = int(input())
 
-result = "Yes"
+print(binary_gcd(2, N))
+print(binary_gcd(3, N))
 
-while N > 0:
-    if N % 2 == 0:
-        N // 2
-    elif N % 3 == 0:
-        N // 3
-    else:
-        result = "No"
-
-print(result)
+if binary_gcd(2, N) == 2 and binary_gcd(3, N) == 3:
+    print("Yes")
+else:
+    print("No")

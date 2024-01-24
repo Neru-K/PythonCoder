@@ -1,6 +1,9 @@
-a = int(input())
-b = int(input())
-c = int(input())
-d = int(input())
+A = int(input())
+B = int(input())
+C = int(input())
+D = int(input())
 
-print(min(a, b) + min(c, d))
+minA = min(A,B)
+minC = min(C,D)
+
+print(str(minA + minC))
