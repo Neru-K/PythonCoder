@@ -4,6 +4,7 @@ import sys
 
 
 # この関数は `main.py` ファイルの内容を解析して、必要なデータを抽出します。
+
 def parse_main_py(file_path):
     if not os.path.exists(file_path):
         return None
@@ -87,10 +88,11 @@ def update_blog_json(json_path, contest_type, problem_id, content):
 
 
 def main(file_paths):
-    print("file_paths is " + file_paths)
+    file_paths_str = " ".join(file_paths)  # リストの要素を空白で結合
+    print("file_paths is " + file_paths_str)
     json_path = "docs/blog.json"  # JSONファイルのパス
 
-    for file_path in file_paths:
+    for file_path in file_paths:  # 修正: file_pathsをイテレート
         contest_type = os.path.basename(
             os.path.dirname(os.path.dirname(file_path))
         ).upper()
@@ -106,3 +108,4 @@ def main(file_paths):
 if __name__ == "__main__":
     file_paths = sys.argv[1].split(" ")
     main(file_paths)
+
