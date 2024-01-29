@@ -34,6 +34,66 @@
                             ]
                         }
                     }
+                },
+                {
+                    "name": "c",
+                    "problems": {
+                        "title": "#C - Monotonically Increasing",
+                        "body": [
+                            {
+                                "tag": "code",
+                                "text": ""
+                            },
+                            {
+                                "tag": "h2",
+                                "text": "解説を見る前に考えたこと"
+                            },
+                            {
+                                "tag": "p",
+                                "text": "・順列全列挙する？\n・順列前列挙って途中で条件分岐仕込めたりするのかな？\n・普通にfor文回す？\n・でもNの数が変わるからfor文仕込めるかな？\n・ループの数がM回になるのはどうしたら？再帰？"
+                            },
+                            {
+                                "tag": "h2",
+                                "text": "解説を見た後に考えたこと"
+                            },
+                            {
+                                "tag": "p",
+                                "text": "・再起で実装するのは合ってた\n・なんで実装する前に答えを見ちゃうんだろう・・・\n・脳死で書けるように写経するのもいいかも\n・再起関数の引数に何を渡す？"
+                            },
+                            {
+                                "tag": "h2",
+                                "text": "他の人の解答を見た後に考えたこと"
+                            },
+                            {
+                                "tag": "p",
+                                "text": "・conbinationsなんてものがあるのか！\n・順列と組み合わせどちらもあるのは知らなかった\n・どうやって使うんだろう？\n・print(*c)の*ってどういう意味？"
+                            },
+                            {
+                                "tag": "code",
+                                "text": ""
+                            },
+                            {
+                                "tag": "code",
+                                "text": "from itertools import combinations"
+                            },
+                            {
+                                "tag": "code",
+                                "text": ""
+                            },
+                            {
+                                "tag": "code",
+                                "text": "N, M = map(int, input().split())"
+                            },
+                            {
+                                "tag": "code",
+                                "text": "for c in combinations(range(1, M + 1), N):"
+                            },
+                            {
+                                "tag": "code",
+                                "text": "    print(*c)"
+                            }
+                        ]
+                    }
                 }
             ]
         },
