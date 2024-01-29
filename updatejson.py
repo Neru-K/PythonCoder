@@ -98,6 +98,15 @@ def main(file_paths):
         ).upper()
         problem_id = os.path.basename(os.path.dirname(file_path))
 
+        if contest_type[0:3] == "ABC":
+            contest_type = "ABC"
+        elif contest_type[0:3] == "ARC":
+            contest_type = "ARC"
+        elif contest_type[0:3] == "AGC":
+            contest_type = "AGC"
+        elif contest_type[0:3] == "ATC":
+            contest_type = "ATC"
+
         print("contest_type is " + contest_type)
         print("problem_id is " + problem_id)
 
