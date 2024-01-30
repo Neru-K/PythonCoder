@@ -96,7 +96,7 @@ def main(file_paths):
         contest_type = os.path.basename(
             os.path.dirname(os.path.dirname(file_path))
         ).upper()
-        problem_id = os.path.basename(os.path.dirname(file_path))
+        problem_id = contest_type
 
         if contest_type[0:3] == "ABC":
             contest_type = "ABC"
