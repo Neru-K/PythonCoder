@@ -1,9 +1,9 @@
 {
-    "dir": {
-        "ABC": {
+    "dir": [
+        {
             "contestgenre": "ABC",
-            "contests": {
-                "abc246": {
+            "contests": [
+                {
                     "name": "abc246",
                     "problemset": [
                         "a",
@@ -35,7 +35,7 @@
                         }
                     }
                 },
-                "abc263": {
+                {
                     "name": "abc263",
                     "problems": {
                         "title": "#C - Monotonically Increasing",
@@ -95,27 +95,27 @@
                         ]
                     }
                 }
-            }
+            ]
         },
-        "ARC": {
+        {
             "contestgenre": "ARC",
             "contests": []
         },
-        "AGC": {
+        {
             "contestgenre": "AGC",
             "contests": []
         },
-        "ATC": {
+        {
             "contestgenre": "ATC",
             "contests": []
         },
-        "TYPICAL90": {
+        {
             "contestgenre": "TYPICAL90",
             "contests": []
         },
-        "TESSOKU-BOOK": {
+        {
             "contestgenre": "TESSOKU-BOOK",
             "contests": []
         }
-    }
+    ]
 }
