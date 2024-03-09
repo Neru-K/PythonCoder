@@ -1,13 +1,14 @@
 S = input()
 
-a = ""
-result = "No"
+lstripped = S.lstrip("a")
+rstripped = S.rstrip("a")
+stripped = S.strip("a")
 
-for i in range(len(S)):
-    concat = a + S
-    if concat == concat[::-1]:
-        result = "Yes"
-        break
-    a += "a"
-
-print(result)
+if S == S[::-1]:
+    print("Yes")
+elif len(lstripped) < len(rstripped):
+    print("No")
+elif stripped == stripped[::-1]:
+    print("Yes")
+else:
+    print("No")

@@ -9,31 +9,33 @@
 """
 
 N = int(input())
-A = [input() for _ in range(N)]
-p = []
 
-p.append(A[0][0:N - 1])
-
-right = ""
-for i in range(N - 1):
-    right += A[i][N - 1]
-
-p.append(right)
-
-print(A[N - 1])
-
-p.append(A[N - 1][1:N][::-1])
-
-left = ""
-for i in range(0,N-1):
-    left += A[i][0]
-
-p.append(left)
-
-grid = A.copy()
-
-print(p[3])
-
-grid[0] = p[0] + p[3][N - 2]
+grid = [[''] * N for _ in range(N)]
 
 print(grid)
+
+A = [list(input()) for _ in range(N)]
+
+print(A)
+
+#middle
+for i in range(1,N - 1):
+    for j in range(1,N - 1):
+        grid[i][j] = A[i][j]
+
+print(grid)
+
+outer = []
+
+for i in range(N * 4 - 4):
+    if i < N:
+        print(i)
+    elif i < N * 2 - 1:
+        print(N - 1 + (i % 4 + 1) * N)
+    elif i < N * 3 - 2:
+        print(N * N - 1 - ((i + 2) % 4))
+    else:
+        print()
+
+exit()
+print(i % 4)

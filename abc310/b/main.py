@@ -1,28 +1,20 @@
 N, M = map(int, input().split())
-P = [list(map(int, input().split())) for _ in range(N)]
 
 result = "No"
+P,C,L = [],[],[]
+
+for i in range(N):
+    splitted = list(map(int, input().split()))
+
+    P.append(splitted[0])
+    C.append(splitted[1])
+    L.append(set(list(splitted[2:])))
+
 
 for i in range(N):
     for j in range(N):
-        if i == j:
-            continue
+        if P[i] >= P[j] and L[i] <= L[j] and (P[i] > P[j] or len(L[i]) < len(L[j])):
+            print("Yes")
+            exit()
 
-        flag = False
-
-        if P[i][0] >= P[j][0]:
-            nums = P[i][2:]
-
-            for k in range(2, len(P[j])):
-                if P[j][k] not in nums:
-                    flag = True
-                    break
-
-        if flag:
-            break
-
-        if P[i][0] > P[j][0] or len(P[i]) < len(P[j]):
-            result = "Yes"
-            break
-
-print(result)
+print("No")
