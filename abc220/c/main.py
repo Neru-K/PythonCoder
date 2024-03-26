@@ -2,10 +2,18 @@ N = int(input())
 A = list(map(int, input().split()))
 X = int(input())
 
-i = 0
-sum = 0
-while sum <= X:
-    sum += A[i % 3]
-    i += 1
+sumA = sum(A)
 
-print(i)
+div = X // sumA
+
+count = N * div
+
+total = sumA * div
+
+for i in range(N):
+    total += A[i]
+    count += 1
+    if total > X:
+        break
+
+print(count)
