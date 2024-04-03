@@ -1,17 +1,19 @@
 N = int(input())
-st = [list(map(str, input().split())) for _ in range(N)]
+st = []
 
-result = "Yes"
+names = []
 
 for i in range(N):
-    count = 0
-    for j in range(i, N):
-        if i != j:
-            if (st[i][0] != st[j][0] or st[i][0] != st[j][1]) or (
-                st[i][1] != st[j][0] or st[i][1] != st[j][1]
-            ):
-                count += 1
-                break
+    s,t = map(str,input().split())
+    names.append(s)
+    if t != s:
+        names.append(t)
+    
+    st.append((s,t))
 
+for i in range(N):
+    if names.count(st[i][0]) > 1 and names.count(st[i][1]) > 1:
+        print("No")
+        exit()
 
-print(result)
+print("Yes")
