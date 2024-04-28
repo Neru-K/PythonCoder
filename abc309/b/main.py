@@ -1,41 +1,33 @@
-"""
-・どういう方向性でやるか？
-・制約が小さいので、ループを回すのを上手に実装するだけか
-・時計回りにリストに格納したい
-・まずは一行目
-・一番下は文字列をリバースすればいいだけでは？
-・TRDLに別々でリストに格納する。
-・各辺をN-1個ずつに格納し、ずらす。
-"""
+import copy
 
 N = int(input())
 
-grid = [[''] * N for _ in range(N)]
-
-print(grid)
-
 A = [list(input()) for _ in range(N)]
 
-print(A)
+grid = copy.deepcopy(A)
 
-#middle
-for i in range(1,N - 1):
-    for j in range(1,N - 1):
-        grid[i][j] = A[i][j]
+#top
+for i in range(N - 1):
+    grid[0][i + 1] = A[0][i]
 
-print(grid)
+#right
+for i in range(N - 1):
+    grid[i + 1][N - 1] = A[i][N - 1]
 
-outer = []
+#bottom
+for i in range(1, N):
+    grid[N - 1][i - 1] = A[N - 1][i]
 
-for i in range(N * 4 - 4):
-    if i < N:
-        print(i)
-    elif i < N * 2 - 1:
-        print(N - 1 + (i % 4 + 1) * N)
-    elif i < N * 3 - 2:
-        print(N * N - 1 - ((i + 2) % 4))
-    else:
-        print()
+#left
+for i in range(1, N):
+    grid[i - 1][0] = A[i][0]
 
-exit()
-print(i % 4)
+s = ''
+
+for i in range(N):
+    line = ''.join(grid[i])
+    s += line
+    if i < N - 1:
+        s += '\n'
+
+print(s)
