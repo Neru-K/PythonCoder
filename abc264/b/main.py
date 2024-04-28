@@ -1,10 +1,6 @@
 R, C = map(int, input().split())
 
-num = 0
-
-for i in range(1, 16):
-    num += 1
-    for j in range(1, 16):
-        num += 1
-        if i == R and j == C:
-            break
+if max(abs(8 - R), abs(8 - C)) % 2 == 0:
+    print("white")
+else:
+    print("black")
