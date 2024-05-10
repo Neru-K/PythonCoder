@@ -10,20 +10,17 @@ B = [list(input()) for _ in range(R)]
 
 def manhattan(x, y, distance):
 
-    for d in range(1,distance+1):
+    for dx in range(-distance, distance + 1):
+        for dy in range(-distance, distance + 1):
+            if abs(dx) + abs(dy) <= distance:
+                nx = x + dx
+                ny = y + dy
 
-        dx = [0,d-1,d,d-1,0,1-d,-d,1-d]
-        dy = [-d,1-d,0,d-1,d,d-1,0,1-d]
+                if nx == x and ny == y:
+                    continue
 
-        for i in range(8):
-            nx = x + dx[i]
-            ny = y + dy[i]
-
-            if nx == x and ny == y:
-                continue
-
-            if 0 <= nx < C and 0 <= ny < R and B[ny][nx] == "#":
-                B[ny][nx] = "."
+                if 0 <= nx < C and 0 <= ny < R and B[ny][nx] == "#":
+                    B[ny][nx] = "."
 
 def main():
     for r in range(R):
