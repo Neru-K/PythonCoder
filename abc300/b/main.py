@@ -1,13 +1,19 @@
+import copy
+
 H, W = map(int, input().split())
 
-A = [input() for _ in range(H)]
-B = [input() for _ in range(H)]
+A = [list(input()) for _ in range(H)]
+B = [list(input()) for _ in range(H)]
 
-if A == B:
-    print("Yes")
-    exit()
+for h in range(H):
+    for w in range(W):
+        Acopy = copy.deepcopy(A)
+        for i in range(H):
+            for j in range(W):
+                Acopy[i][j] = A[(i + h) % H][(j + w) % W]
 
-for i in range(1, H):
-    Acopy = A.copy()
-    for j in range(W):
-        
+        if Acopy == B:
+            print("Yes")
+            exit()
+
+print("No")
