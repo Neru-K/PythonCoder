@@ -1,8 +1,15 @@
-S=list(input())
-if S[0]==S[1]==S[2] or S[1]==S[2]==S[3] or S[2]==S[3]==S[4] :
-  if S[2]=='o':
-    print('o')
-  else:
-    print('x')
-else:
-  print('draw')
+N = int(input())
+S = list(input())
+T = ''
+
+for i in range(N):
+    c = S[i]
+    T = list(T)
+    for j in range(len(T)):
+        if T[j] == c:
+            T[j] = ''
+
+    T.append(c)
+    T = "".join(T)
+
+print(T)
