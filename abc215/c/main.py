@@ -1,11 +1,14 @@
-s, k = map(str, input().split())
-k = int(k)
+import itertools
 
-list = []
+S,K = map(str, input().split())
 
-for i in range(len(s)):
-    print(s[i])
-    for j in range(len(s)):
-        if i != j:
-            print(s[j])
-    print("\n")
+K = int(K)
+
+arr = list(S)
+
+perm = list(itertools.permutations(arr))
+
+set_p = list(set(perm))
+set_p.sort()
+
+print(''.join(set_p[K-1]))

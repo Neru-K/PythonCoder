@@ -1,24 +1,35 @@
 from itertools import product
 
-N, M, K = map(int, input().split()) #N本の鍵、M回のテスト、K本挿した
-keys = []
+N, M, K = map(int, input().split())
 
-allkeys = []
-
-open = []
-close = []
+line = []
 
 for i in range(M):
-    row = list(map(str, input().split()))
-    result = row.pop(-1)
-    allkeys += row
-    arr = sorted(list(set(row)))
-    keys.append(arr)
+    line.append(list(input().split()))
 
-unique = list(set(allkeys))
-
+ans = 0
 
 for pro in product((0, 1), repeat=N):
-    # proは長さN、各要素が整数 0 か 1 のタプル
-    print(pro)
 
+    isalltrue = True
+    
+    for i in range(M):
+        n = int(line[i][0])
+        R = line[i][-1]
+        count = 0
+
+        for j in range(1,n+1):
+            if pro[int(line[i][j])-1] == 1:
+                count += 1
+
+        if count >= K and R == 'x':
+            isalltrue = False
+            break
+        if count < K and R == 'o':
+            isalltrue = False
+            break
+
+    if isalltrue:
+        ans += 1
+
+print(ans)
