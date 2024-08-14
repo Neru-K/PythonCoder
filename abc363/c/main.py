@@ -1,9 +1,16 @@
 import itertools
+import math
+
+
 
 N, K = map(int,input().split())
 S = input()
 
 lst = list(S)
+
+if len(set(lst)) == N:
+    print(math.perm(N, K))
+    exit()
 
 unique = list(set(itertools.permutations(lst)))
 
