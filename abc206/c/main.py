@@ -1,12 +1,13 @@
+import math
+
 N = int(input())
 
 A = list(map(int, input().split()))
 
-B = []
+A.sort()
 
-for i in range(N):
-    B.append([A[i],i])
+lst = list(set(A))
 
-B.sort(key=lambda x:x[0])
+print(lst)
 
-print(B)
+print(math.perm(len(lst), len(lst)))
