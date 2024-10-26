@@ -1,13 +1,15 @@
+exit()
+
 import math
 
 N = int(input())
 
 A = list(map(int, input().split()))
 
-A.sort()
 
 lst = list(set(A))
+lst.sort()
 
 print(lst)
 
-print(math.perm(len(lst), len(lst)))
+print(math.perm(len(lst), 2))

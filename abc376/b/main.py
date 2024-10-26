@@ -1,26 +1,28 @@
 N, Q = map(int, input().split())
 
-L = 1
-R = 2
-offset = 0
-
+L = 0
+R = 1
 count = 0
+
+def calcDistance(N, S, E, X):
+    if S > E:
+        S, E = E, S
+
+    if S < X and X < E:
+        return N - (E - S)
+    else:
+        return E - S
 
 for i in range(Q):
     H, T = map(str, input().split())
-    T = int(T)
+    T = int(T) - 1
 
     if H == "R":
-        if L < R:
-            if T > R:
-                #
-            else:
-        
-        else:
-
+        count += calcDistance(N, R, T, L)
+        R = T
 
     else:
-        if T > R:
-            offset = 
+        count += calcDistance(N, L, T, R)
+        L = T
 
 print(count)
