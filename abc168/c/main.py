@@ -2,19 +2,14 @@ import math
 
 A, B, H, M = map(int, input().split())
 
-angleH = (H % 12) * 30 + M * 0.5
+angH = (60 * H + M) / 720 * 360
+angM = M / 60 * 360
+angTheta = angH - angM
+angTheta = 360 - angTheta if angTheta < 0 else angTheta
 
-angleM = M * 6
+thetaRad = math.radians(angTheta)
+cosTheta = math.cos(thetaRad)
 
-angle = abs(angleH - angleM)
+lenCSquared = ((A ** 2) + (B ** 2)) - (2 * A * B * cosTheta)
 
-if angle > 180:
-    angle = 360 - angle
-
-angle_rad = math.radians(angle)
-
-C2 = A**2 + B**2 - 2 * A * B * math.cos(angle_rad)
-
-C = math.sqrt(C2)
-
-print(C)
+print(lenCSquared ** 0.5)
