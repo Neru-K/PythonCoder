@@ -6,7 +6,7 @@ ans = ""
 L = []
 R = []
 
-ans = []
+ans = [0] * N
 
 for i in range(1, N + 2):
     if S[i - 1] == "0" and S[i] == "1":
@@ -14,8 +14,14 @@ for i in range(1, N + 2):
     elif S[i - 1] == "1" and S[i] == "0":
         R.append(i - 2)
 
-idx_l = 0
-idx_r = 0
+diff = R[K - 1] - L[K - 1]
+L[K - 1] = R[K - 2] + 1
+R[K - 1] = L[K - 1] + diff
 
-for j in range(N):
-    if 
+idx = 0
+
+for j in range(len(L)):
+    for k in range(L[j], R[j] + 1):
+        ans[k] = 1
+
+print(*ans, sep='')
