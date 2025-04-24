@@ -8,7 +8,11 @@
 N, M = map(int, input().split())
 Ks = []
 As = []
-idxs = [0] * 9
+list_count = [0] * N
+
+# まずは食材と、その食材が最初に食べられる日の対応を作る。
+
+# ループで各料理の食材を見ていって、その料理の食材において、最後に食べられる日を確認→配列に＋1する
 
 for i in range(M):
   KA = list(map(int, input().split()))
@@ -19,14 +23,11 @@ for i in range(M):
 
 B = list(map(int, input().split()))
 
+dict = {}
 
-for b in B:
-  eatable = 0
-  for seta in As:
-    if b in seta:
-      seta.remove(b)
+for i in range(N):
+  dict[B[i]] = i
+  
 
-    if len(seta) == 0:
-      eatable += 1
-
-  print(eatable)
+for list_a in As:
+  
