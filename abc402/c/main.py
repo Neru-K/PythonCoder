@@ -30,4 +30,15 @@ for i in range(N):
   
 
 for list_a in As:
+  max = -1
+  for a in list_a:
+    if dict[a] > max:
+      max = dict[a]
+      
+  list_count[max] += 1
   
+count = 0
+
+for c in list_count:
+  count += c
+  print(count)
