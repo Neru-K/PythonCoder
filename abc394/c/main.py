@@ -1,4 +1,16 @@
+import re
+
 S = input()
+result_s = list(S)
+
+pattern = r"W+A"
+
+for match in re.finditer(pattern, S):
+    result_s[match.regs[0][0]] = "A"
+    for l in range(match.regs[0][0] + 1, match.regs[0][1]):
+        result_s[l] = "C"
+
+print(*result_s, sep="")
 
 arr_pos = []
 result_s = list(S)
@@ -30,7 +42,7 @@ result_s = list(S)
 
 """
 
-firstidx = -1
+""" firstidx = -1
 lastidx = -1
 flag = False
 
@@ -72,3 +84,4 @@ for pair in arr_pos:
         result_s[l] = "C"
 
 print(*result_s, sep="")
+ """
