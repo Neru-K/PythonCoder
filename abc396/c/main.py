@@ -11,7 +11,7 @@ W.sort(reverse=True)
 max = 0
 
 for i in range(N):
-  if i >= M - 1:
+  if i > M - 1:
     if B[i] > 0:
       max += B[i]
       
