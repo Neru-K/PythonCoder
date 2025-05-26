@@ -1,33 +1,35 @@
 N = int(input())
 P = list(map(int, input().split()))
-R = [0] * N
+S = []
 
-for i in range(1, N - 1):
-  if P[i - 1] < P[i] and P[i] > P[i + 1]:
-    R[i] = 1
-  elif P[i - 1] > P[i] and P[i] < P[i + 1]:
-    R[i] = 2
 
-result = 0
+def rle(s):
+    bef = s[0]
+    cnt = 1
+    arr = []
+    for i in range(1, len(s)):
+        if s[i] == bef:
+            cnt += 1
+        else:
+            arr.append([bef, cnt])
+            bef = s[i]
+            cnt = 1
+    arr.append([bef, cnt])
+    return arr
 
-# しゃくとり法
-for l in range(1, N-1):
-  count1 = 0
-  count2 = 0
-  r = l
 
-  if P[l - 1] >= P[l]:
-    continue
+for i in range(1, N):
+    if P[i - 1] < P[i]:
+        S.append("<")
+    else:
+        S.append(">")
 
-  while r < N - 1 and count1 < 2 and count2 < 2:
-    if R[r] == 1:
-      count1 += 1
-    elif R[r] == 2:
-      count2 += 1
-      
-    if count1 == 1 and count2 == 1:
-      result += 1
-      
-    r += 1
+shortS = rle("".join(S))
 
-print(result)
+count = 0
+
+for j in range(1, len(shortS) - 1):
+    if shortS[j][0] == ">" and shortS[j - 1][0] == "<" and shortS[j + 1][0] == "<":
+        count += shortS[j - 1][1] * shortS[j + 1][1]
+
+print(count)
