@@ -15,11 +15,15 @@ for i in range(N - 1, -1, -1):
 
 set_a = set()
 count = 0
+max = 0
 
-for j in range(N):
+for j in range(N - 1):
     if A[j] not in set_a:
         count += 1
 
     set_a.add(A[j])
 
-print(remain)
+    if count + remain[j + 1] > max:
+        max = count + remain[j + 1]
+
+print(max)
