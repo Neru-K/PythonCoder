@@ -1,18 +1,19 @@
 N = int(input())
 S = list(input())
 
-ans = 0
-tmp = 0
-right = 0
+pos = []
 
-for left in range(N):
-    if right == left:
-        right += 1
+for i in range(N * 2):
+    if S[i] == "A":
+        pos.append(i)
 
-    while right < N and S[left] != S[right + 1]:
-        tmp += S[right]
-        right += 1
-    ans += right - left
+diffs1 = []
+diffs2 = []
 
+for j in range(len(pos)):
+    diffs1.append(abs((j * 2) - pos[j]))
 
-print(ans, count)
+for k in range(len(pos)):
+    diffs2.append(abs((k * 2) + 1 - pos[k]))
+
+print(min(sum(diffs1), sum(diffs2)))

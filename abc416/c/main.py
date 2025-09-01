@@ -9,8 +9,13 @@ for _ in range(N):
 now = [""]
 next = []
 
-for i in range():
-    # nowからnextを作る
-  for j in range():
-    
-    for k in range():
+for k in range(K):
+    for nw in now:
+        for s in list_S:
+            next.append(nw + s)
+
+    now = next
+    next = []
+
+now.sort()
+print(now[X - 1])
