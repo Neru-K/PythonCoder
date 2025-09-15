@@ -1,6 +1,10 @@
 N, R = map(int, input().split())
 L = list(map(int, input().split()))
 
+if not L.count(0):
+    print(0)
+    exit()
+
 l, r = N - 1, 0
 
 for i in range(N):
@@ -12,17 +16,7 @@ for i in range(N):
 
 count1 = 0
 
-for j in range(N):
-    if j >= l and j <= r:
-        if L[j] == 1:
-            count1 += 1
+l = min(l, R)
+r = max(r + 1, R)
 
-if R - 1 < l:
-
-    print(r - l + 1 + count1 + (l - (R - 1)))
-
-elif R - 1 > r:
-    print(r - l + 1 + count1 + ((R - 1) - (r + 1)))
-
-else:
-    print(r - l + 1 + count1)
+print(L[l:r].count(1) + (r - l))
