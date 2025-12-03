@@ -1,8 +1,22 @@
+import math
+
 N, X, Y = map(int, input().split())
 A = list(map(int, input().split()))
+A.sort()
 
-for i in range(N):
-    for xnum in range(A[i]):
-        ynum = A[i] - xnum
+least_num = math.lcm(X, Y)
+diff_num = least_num // X - least_num // Y
 
-# 答えが存在しないパターンの判定だけでも、まずは考えられると良い
+if A[0] * Y < A[N - 1] * X:
+    print(-1)
+    exit()
+
+ans = 0
+
+for i in range(N - 1):
+    if (A[i + 1] - A[i]) % diff_num > 0:
+        print(-1)
+        exit()
+
+
+#
