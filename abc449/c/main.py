@@ -1,23 +1,22 @@
 N, L, R = map(int, input().split())
 S = input()
 
-d = {}
-
-for i in range(len(S)):
-    if S[i] in d:
-        d[S[i]].append(i)
-    else:
-        d[S[i]] = [i]
+alphabets = "abcdefghijklmnopqrstuvwxyz"
 
 ans = 0
 
-for v in d.values():
-    for i in range(0, len(v) - 1):
-        for j in range(i + 1, len(v)):
-            diff = v[j] - v[i]
-            if diff > R:
-                break
-            if L <= diff:
-                ans += 1
+for c in alphabets:
+    ruisekiwa = [0]
+    for s in S:
+        if s == c:
+            ruisekiwa.append(ruisekiwa[-1] + 1)
+        else:
+            ruisekiwa.append(ruisekiwa[-1])
 
-print(ans)
+    for j in range(N):
+        if S[j] == c:
+            l, r = max(0, j - R), j - L + 1
+            if r < 0:
+                continue
+
+        ans += ruisekiwa[r] - ruisekiwa[l]
