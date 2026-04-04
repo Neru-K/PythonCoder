@@ -20,3 +20,5 @@ for c in alphabets:
                 continue
 
         ans += ruisekiwa[r] - ruisekiwa[l]
+
+print(ans)
