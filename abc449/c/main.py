@@ -19,6 +19,6 @@ for c in alphabets:
             if r < 0:
                 continue
 
-        ans += ruisekiwa[r] - ruisekiwa[l]
+            ans += ruisekiwa[r] - ruisekiwa[l]
 
 print(ans)
